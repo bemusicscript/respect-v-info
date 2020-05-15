@@ -1,0 +1,161 @@
+.navbar { background-color: #ffd835 !important; }
+.navbar-nav { color: #000 !important; }
+.navbar .navbar-toggler-icon { background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(64,64,64)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E"); }
+
+.jumbotron {
+    position:relative;
+    background-color:#444;
+    border-radius:0;
+    margin: 0;
+    padding: 2rem;
+    !important;
+}
+.jumbotron > .container-fluid {
+    z-index:1920;
+    color:white;
+}
+
+.jumbotron > .jumbotron-background {
+    background:url(/static/img/library_hero.jpg);
+    background-opacity:0.3;
+    background-size: cover;
+    background-position: 0 40%;
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    opacity:0.3;
+    z-index:1
+    !important;
+}
+.jumbotron .container {
+    z-index: 1;
+    position: relative;
+    max-width: 1920px;
+
+}
+
+.main { padding-top: 25px; }
+.card-content ul { padding-top: 15px; }
+.ranking-card table td { cursor:pointer; }
+.ranking-card { padding: 30px; }
+
+.type-bar {
+    background: #fff;
+    width: center;
+    height: auto;
+}
+
+.type-bar > .type-menu {
+    text-align: center;
+}
+
+.type-bar ul li { display: inline; }
+.type-bar li a {
+    display: inline-block;
+    padding: 10px 30px;
+    border-bottom: 1px solid #fff;
+    font-size: 20px;
+}
+
+.type-bar .active a {
+    display: inline-block;
+    padding: 10px 30px;
+    color: #af9825;
+    border-bottom: 1px solid #af9825;
+    font-size: 20px;
+}
+
+.type-bar li a:hover {
+    text-decoration: none;
+    color: #cc0303;
+    display: inline-block;
+    padding: 10px 30px;
+    border-bottom: 1px solid #cc0303;
+    font-size: 20px;
+}
+
+.preview_rank_table th {
+    text-align: center; 
+}
+
+.preview_rank_table td {
+    text-align: center;
+}
+
+.preview_rank_table tbody tr:hover td:nth-last-child(1) *{
+    color: white;
+}
+
+.preview_rank_table td:nth-child(1),
+.preview_rank_table td:nth-child(2)
+{
+    text-align: left;
+}
+
+.preview_rank_table td:nth-last-child(1) *:hover {
+    color: white;
+}
+
+.user_profile .last_refreshed_at {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: white;
+    font-size: 8pt;
+}
+
+/* TODO: might relocate at anytime */
+.user_profile > .last_refreshed_at > .refresh_button {
+    font-size: 8pt;
+    padding: 1px 4px;
+    margin-top: -2px;
+    margin-left: 5px;
+}
+
+.user_profile > .info {
+    position: absolute;
+    width: 100%;
+}
+
+@media (max-width:1024px){
+    .preview_rank_table th:nth-last-child(1),
+    .preview_rank_table td:nth-last-child(1){
+        display:none;        
+    }
+    .preview_rank_table td:nth-child(1){
+        text-align: center;
+    }
+    .user_profile {
+        width: auto;
+    }
+}
+
+@media (max-width:550px){
+    .user_profile > * {
+        display:contents;
+    }
+    .user_profile>.info>.achievements {
+        margin: 0;
+    }
+    .user_profile .info {
+        padding: 0;
+        margin: 0;
+        position: relative;
+        width: auto;
+    }
+    .user_profile .last_refreshed_at::before{
+        content: "\A\A";
+        white-space: pre;
+    }
+    .user_profile .last_refreshed_at {
+        margin-top: 10px;
+        color: white;
+        font-size: 8pt;
+        top: auto;
+        left: auto;
+        width: auto;
+        position: relative;
+    }
+}

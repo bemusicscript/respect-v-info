@@ -1,0 +1,829 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+@font-face {
+  font-family: 'blippok';
+  src: url('../fonts/blippok.ttf');
+}
+
+@font-face {
+  font-family: 'lato_regular';
+  src: url('../fonts/Lato-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'lato_light';
+  src: url('../fonts/Lato-Light.ttf');
+}
+
+@font-face {
+  font-family: 'lato_black';
+  src: url('../fonts/Lato-Black.ttf');
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a{
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+
+.navbar a:hover, 
+.navbar a:focus {
+    color: #cfa815;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-respect-brand {
+  display: inline-block;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  margin-right: 1.5rem;
+  text-align: center;
+  font-family: 'blippok';
+  font-size: 1.25rem;
+  line-height: inherit;
+  letter-spacing: 3px;
+  white-space: nowrap;
+}
+
+.navbar-respect-brand :hover, .navbar-respect-brand :focus {
+  text-decoration: none;
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+.wrapper {
+    display: flex;
+    align-items: stretch;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background: #ffd835;
+    transition: all 0.3s;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #ffffff;
+    color: black;
+    font-family: 'blippok';
+    text-align: center;
+    letter-spacing: 5px;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #000000;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+#sidebar ul li a:hover {
+    color: #af8000;
+    background: #fff;
+}
+
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+    color: #af8000;
+    #background: transparent;
+}
+
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+
+ul ul a {
+
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #ffc020;
+}
+
+ul.submenulist {
+    padding: 20px;
+}
+
+ul.submenulist a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+a.download {
+    background: #000;
+    color: #ffc020;
+}
+
+a.article, a.article:hover {
+    background: #ffc020 !important;
+    color: #000 !important;
+}
+
+
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+#content {
+    max-width: 80%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+.dashhead::after {
+    display: block;
+    content: "";
+    clear: both;
+    margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+    .dashhead-titles {
+        float: left; 
+    } 
+}
+
+.dashhead-title {
+    margin-top: 0; 
+}
+
+.dashhead-subtitle {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: italic;
+    font-size: 80%;
+    color: #303030;
+    letter-spacing: 1px;
+}
+
+
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
+}
+
+/*for test iidx.me*/
+
+/*             */
+/*             */
+
+body{
+
+  padding-top : 70px;
+}
+
+label{
+  position: relative;
+  cursor: pointer;
+  color: #666;
+  font-size: 10px;
+}
+/*
+input[type="checkbox"], input[type="radio"]{
+  position: absolute;
+  right: 9000px;
+}
+*/
+
+
+/*Check box*/
+input[type="checkbox"] + .label-text:before{
+  content: "\f096";
+
+  speak: none;
+
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing:antialiased;
+  width: 1em;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+input[type="checkbox"]:checked + .label-text:before{
+  content: "\f14a";
+  color: #2980b9;
+  animation: effect 250ms ease-in;
+}
+
+input[type="checkbox"]:disabled + .label-text{
+  color: #aaa;
+}
+
+input[type="checkbox"]:disabled + .label-text:before{
+  content: "\f0c8";
+  color: #ccc;
+}
+
+@keyframes effect{
+  0%{transform: scale(0);}
+  25%{transform: scale(1.3);}
+  75%{transform: scale(1.4);}
+  100%{transform: scale(1);}
+}
+
+
+
+.table-wrapper {
+    background: #fff;
+    padding: 20px;
+    margin: 30px 0;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.table-title {
+    padding-bottom: 10px;
+    margin: 0 0 10px;
+}
+.table-title h2 {
+    margin: 8px 0 0;
+    font-size: 22px;
+}
+.search-box {
+    position: relative;
+    float: right;
+}
+.search-box input {
+    height: 34px;
+    border-radius: 20px;
+    padding-left: 35px;
+    border-color: #ddd;
+    box-shadow: none;
+}
+.search-box input:focus {
+    border-color: #3FBAE4;
+}
+.search-box i {
+    color: #a0a5b1;
+    position: absolute;
+    font-size: 19px;
+    top: 8px;
+    left: 10px;
+}
+table.table tr th, table.table tr td {
+    border-color: #e9e9e9;
+}
+table.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #fcfcfc;
+}
+table.table-striped.table-hover tbody tr:hover {
+    background: #f5f5f5;
+}
+table.table th i {
+    font-size: 13px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+table.table td:last-child {
+    width: 130px;
+}
+table.table td a {
+    color: #a0a5b1;
+    display: inline-block;
+    margin: 0 5px;
+}
+table.table td a.view {
+    color: #03A9F4;
+}
+table.table td a.edit {
+    color: #FFC107;
+}
+table.table td a.delete {
+    color: #E34724;
+}
+table.table td i {
+    font-size: 19px;
+}
+.pagination {
+    float: right;
+    margin: 0 0 5px;
+}
+.pagination li a {
+    border: none;
+    font-size: 95%;
+    width: 30px;
+    height: 30px;
+    color: #999;
+    margin: 0 2px;
+    line-height: 30px;
+    border-radius: 30px !important;
+    text-align: center;
+    padding: 0;
+}
+.pagination li a:hover {
+    color: #666;
+}
+.pagination li.active a {
+    background: #03A9F4;
+}
+.pagination li.active a:hover {
+    background: #0397d6;
+}
+.pagination li.disabled i {
+    color: #ccc;
+}
+.pagination li i {
+    font-size: 16px;
+    padding-top: 6px
+}
+.hint-text {
+    float: left;
+    margin-top: 6px;
+    font-size: 95%;
+}
+
+/* ---------------------------------------------------
+    SONG PAGE - song
+----------------------------------------------------- */
+
+table.musiclist{
+    width: 100%;
+}
+table.musiclist th{
+  /*padding: 0 10px;*/
+    display: table-cell;
+}
+table.musiclist tr th, table.musiclist tr td {
+    font-size: 13px;
+    vertical-align: middle;
+}
+
+table.musiclist tr td {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 0px;
+    padding-right: 10px;
+}
+
+table.musiclist tr th.image{
+}
+
+table.musiclist .id{
+    width: 1%;
+    text-align: center;
+}
+table.musiclist .image{
+    width: 1%;
+}
+table.musiclist .edition{
+    width: 8%;
+}
+table.musiclist .composed_by{
+    width: 10%;
+}
+table.musiclist .sung_by{
+    width: 10%;
+}
+table.musiclist .arranged_by{
+    width: 10%;
+}
+table.musiclist .remixed_by{
+    width: 10%;
+}
+table.musiclist .feat{
+    width: 8%;
+}
+table.musiclist .visualized_by{
+    width: 10%;
+}
+table.musiclist .lyrics_by{
+    width: 10%;
+}
+
+.music-card {
+    padding: 20px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-width: 5px;
+    border-style: dashed;
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+
+/* jumbotron customize - user/<int> top banner profile image */
+.user_profile{
+    width: 1000px;
+    max-width: 1000px;
+    min-width: 100px;
+    font-family: 'lato_regular';
+}
+
+.user_profile>.picture{
+    display: inline-block;
+    width: 150px;
+}
+.user_profile>.picture>a>.steam_image{
+    display: block;
+    width: 150px;
+    height: 150px;
+}
+
+.user_profile>.info{
+    position: relative;
+    display: inline-block;
+    margin: 0 25px 0 25px;
+
+}
+.user_profile>.info>.user_name{
+    width: 100px;
+    color: whitesmoke;
+    font-size: 30px;
+    font-weight: bold;
+    margin-right: 4px;
+    vertical-align: middle;
+    display:inline;
+}
+.user_profile>.info>.achievements{
+    margin-bottom: 60px;
+}
+.user_profile>.info>.refresh_button{
+    margin-top: 3px;
+    font-size: 10px;
+}
+.user_profile>.info>.last_refreshed_at{
+    color: lightgray;
+    font-size: 12px;
+}
+
+
+
+
+/* ---------------------------------------------------
+    USER INFO PAGE - user/<int>
+----------------------------------------------------- */
+.user_info{
+    display: inline-block;
+    text-align: center;
+    font-weight: bolder;
+    font-family: 'lato_black';
+    line-height: inherit;
+    white-space: nowrap;
+    padding: 0 20px;
+    padding-bottom: 5px;
+    cursor:pointer;
+    user-drag:none;
+    user-select:none;
+}
+.user_info:hover{
+    border-radius: 5px;
+    background-color: #333;
+    cursor:pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+.user_info:hover, .user_info:hover * {
+    color:white;
+}
+
+.user_info .button_num{
+    font-size: 2rem;
+    word-break: break-all;
+}
+.user_info .button_text{
+    font-size: 1rem;
+    word-break: break-all;
+}
+.user_info .tier_name{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.user_info .tier_animation{
+    width: 150px;
+    height: 150px;
+    word-break: break-all;
+}
+.user_info .lp{
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.user_history{
+
+}
+
+.user_history .title{
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.statistics{
+    padding: 3px;
+    display: none;
+}
+
+.statistics>.user_statistics{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.statistics>.user_statistics>.card-header{
+    font-family: 'lato_black';
+    text-align: center;
+}
+
+.user_statistics>.stat_info{
+    padding: 3px;
+    margin-top: 1rem;
+}
+
+.user_statistics>.stat_info>.no_data{
+    text-align: center;
+    font-style: italic;
+    padding-bottom: 1rem;
+}
+
+.statistics>.user_statistics>.stat_info>.details{ }
+.statistics>.user_statistics>.stat_info>.details>.graph_list{
+    text-align: center;
+}
+.statistics>.user_statistics>.stat_info>.details>.graph_list>.graph {
+    height: 300px;
+    width: 300px;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    word-break: break-all;
+    display: inline-block;
+    text-align: center;
+
+}
+
+.statistics>.user_statistics>.stat_info>.details>.header_profile {
+    padding: 0 0 30px 50px;
+}
+.statistics>.user_statistics>.stat_info>.details>.header_profile>.rank {
+    width: 100px;
+    font-family: 'lato_black';
+    font-size: 40px;
+    font-weight: bold;
+    vertical-align: baseline;
+    display:inline;
+
+
+}
+.statistics>.user_statistics>.stat_info>.details>.header_profile>.sub_script{
+    width: 100px;
+    font-family: 'lato_light';
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 4px;
+    vertical-align: baseline;
+    display:inline;
+
+}
+.details>.todo_text{
+    text-align: center;
+    padding-bottom: 20px;
+}
+.statistics>.user_statistics>.stat_info>.details>.header_profile>.achievements {
+    font-size: 17px;
+}
+
+
+.loader{ text-align: center;}
+.loader>.loader_anim{ display: none; text-align: center;}
+
+.profile_border {
+    width: 100%;
+    border: 1px solid #ccc;
+    display: none;
+    background: #fff;
+    border-radius: 0.5em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: #FFC107;
+}
+.profile_border:hover{
+    border-radius: 5px;
+    background-color: #333;
+    cursor:pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+.profile_border:hover, .profile_border:hover * {
+    color:white;
+}
+
+.profile_border .img{
+    width: 100px;
+    height: 100px;
+    display: inline;
+    border-radius: 0.1em;
+}
+
+.profile_border .preview_info{
+    width: 100px;
+    display:inline;
+    line-height: 1.6em;
+}
+
+
+.profile_border .preview_info .name{
+    width: 100px;
+    font-size: 30px;
+    font-weight: bold;
+    display:inline;
+}
+
+.profile_border .preview_info .id{
+    width: 100px;
+    font-size: 10px;
+    font-weight: bold;
+    margin-right: 10px;
+    vertical-align: middle;
+    display:inline-flex;
+}
+
+
+.preview_user_card,
+.user_card {
+    padding: 15px 10px;
+    border: none;
+    border-radius: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: #FFC107;
+    font-family: 'lato_regular';
+}
+.preview_user_card:hover,
+.user_card:hover{
+    border-radius: 5px;
+    background-color: #ffd835;
+    cursor:pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+.preview_user_card:hover,
+.preview_user_card:hover *,
+user_card:hover,
+user_card:hover * {
+    color:black;
+}
+
+.tier_text{
+    display: inline;
+    font-size: 10pt;
+}
+.tier_text>.promote_text{
+    display: inline;
+    font-size: 8pt;
+    color: cornflowerblue;
+}
+.user_card>.rank{
+    padding-top: 25px;
+}
+.user_rank>.rank>.rank_text{
+    display: inline-block;
+}
+.user_rank>.rank>.flu_rank_text{
+}
+.user_card>.lp{
+    font-size: 10pt;
+    vertical-align: center;
+}
+.user_card>.pp_rate{
+    font-size: 9pt;
+    text-align: center;
+}
+.user_card>.win_rate{
+    font-size: 9pt;
+    text-align: center;
+}
+.user_card>.acc{
+    font-size: 9pt;
+}
+
+
+table.rank_table td.rank{
+    width: 10%;
+}
+table.rank_table td.name{
+    width: 30%;
+}
+table.rank_table td.tier{
+    width: 15%;
+}
+table.rank_table lp{ width: 5%; }
+table.rank_table td.lp{
+    padding-top: 27px;
+
+}
+table.rank_table td.win_rate{
+    width: 15%;
+}
+table.rank_table td.pp_rate{
+    width: 15%;
+}
+table.rank_table acc{ width: 5%; }
+table.rank_table td.acc{
+    padding-top: 27px;
+}
+
+
+
+/* rank/ladder/~ */
+table.preview_rank_table td.rank{ padding-top: 27px; width: 15%; }
+table.rank_table td.rank img{ margin-right: 5px; }
+table.rank_table td.name img, table.preview_rank_table td.name img{ margin-right: 5px; }
+table.preview_rank_table td.lp{ padding-top: 27px; width: 17%; }
+table.preview_rank_table td.win_rate{ padding-top: 27px; width: 30%; }
+
+.ladder_rank_preview{
+    width: 100%;
+    text-align: center;
+}
+.ladder_rank_preview>.button_image{
+    width: 40%;
+    overflow: hidden;
+}
+.ladder_rank_preview>.button_image>img{
+    max-width: initial;
+}
+
+.ladder_rank_preview>.button_rank{
+    display: inline-block;
+    width: 40%;
+}
+
+.ladder_rank_preview>.button_rank>.preview_rank_table{
+    display: inline;
+    margin:0 auto;
+}
+
+table.history_list{
+
+}
+table.history_list td.round{
+    width: 3%;
+    text-align: CENTER;
+    padding-top: 25px;
+}
+table.history_list td.song{ width: 1%; }
+table.history_list td.p1_score{ width: 10%; padding-top: 25px;}
+table.history_list td.p2_score{ width: 10%; padding-top: 25px;}
+table.history_list td.win_lose{ width: 10%; padding-top: 25px;}
+

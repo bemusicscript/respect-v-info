@@ -1,0 +1,50 @@
+{% include 'base/header.html' %}
+{% load static %}
+    <div class="jumbotron">
+        <div class="container-fluid body-content">
+            <h1 class="display-4">DJMAX Respect V Info</h1>
+            <p class="lead" style="color:white;">DJMAX Respect V Info</p>
+        </div>
+        <div class="jumbotron-background"></div>
+    </div>
+    <div class="container-fluid main">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-9">
+                <div class="card">
+                    <div class="card-header">Notice</div>
+                    <div class="card-content">
+                        <ul>
+                            <li>415 패치로 인해 더 이상 래더 및 유저 관련 정보를 조회할 방법이 사라져 사이트 운영을 중단하기로 결정했습니다. </li>
+                            <li>짧은 기간이었지만, 이용해주셔서 감사했습니다. 사이트는 특별한 일이 일어나지않는한 05월 01일까지 열어두겠습니다.</li>
+			
+                            <img src="{% static 'img/coffin_dance.gif' %}" width="200px" height="200px">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-3">
+                <div class="card">
+                    <div class="card-header">Todo</div>
+                    <div class="card-content">
+                        <ul>
+                            <li>-</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-9 col-lg-offset-3" style="padding: 10px 0;"></div>
+            <div class="col-sm-12 col-md-12 col-lg-9 col-lg-offset-3">
+                <div class="card">
+                    <div class="card-header">Steam charts for last 7 days</div>
+                    <iframe src="https://steamdb.info/embed/?appid=960170" height="389px" width="100%" scrolling="no" frameborder="0"></iframe>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-3">
+                <div class="card">
+                    <a class="twitter-timeline" data-width="100%" data-height="500" href="https://twitter.com/DJMAX_global?ref_src=twsrc%5Etfw">Tweets by DJMAX_global</a>
+                </div>
+            </div>
+        </div>
+    </div>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+{% include 'base/footer.html' %}

@@ -1,0 +1,44 @@
+{% include 'base/header.html' %}
+{% load static %}
+    <div class="jumbotron">
+        <div class="container-fluid">
+            <h1 class="display-4">Song List</h1>
+            <p class="lead" style="color:white;">Song List</p>
+        </div>
+        <div class="jumbotron-background"></div>
+    </div>
+    <hr style="width:0;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3"></div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-lg-offset-2">
+
+                <div class="card">
+                    <div class="card-header">Song Information</div>
+                    <div class="card-content">
+                        <img src="{% static 'img/song/' %}{{ id }}.png">
+                        <h6>Patterns <span class="badge badge-secondary">Stair</span></h6>
+                        <h6>Patterns <span class="badge badge-secondary">Hard</span></h6>
+                        title: {{ info.title }}</br>
+                        edition: {{ info.edition }}</br>
+                        comp: {{ info.composed_by }}</br>
+                        sung_by: {{ info.sung_by }}</br>
+                        arranged_by: {{ info.arranged_by }}</br>
+                        remixed_by: {{ info.remixed_by }}</br>
+                        feat: {{ info.feat }}</br>
+                        visualized_by: {{ info.visualized_by }}</br>
+                        lyrics_by: {{ info.lyrics_by }}</br>
+                        대충쳐박고 나중에 css수정해야디
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" charset="utf-8" defer>
+    $(document).ready(function(){
+        $("#songs").DataTable();
+    });
+</script>
+{% include 'base/footer.html' %}

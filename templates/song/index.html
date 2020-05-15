@@ -1,0 +1,66 @@
+{% include 'base/header.html' %}
+{% load get_filter %}
+{% load static %}
+    <div class="jumbotron">
+        <div class="container-fluid">
+            <h1 class="display-4">Song List</h1>
+            <p class="lead" style="color:white;">Song List</p>
+        </div>
+        <div class="jumbotron-background"></div>
+    </div>
+    <hr style="width:0;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-1"></div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-2">
+                <div class="music-card">곡을 선택해주세요</div>
+                <div class="card">
+                    <div class="card-content ranking-card">
+                        <table class="display table table-responsive musiclist" id="songs" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th class="id">#</th>
+                                    <th class="image"></th>
+                                    <th class="edition">Edition</th>
+                                    <th class="title">Title</th>
+                                    <th class="composed_by">Composed by</th>
+                                    <th class="sung_by">Sung by </th>
+                                    <th class="arranged_by">Arranged by</th>
+                                    <th class="remixed_by">Remixed by</th>
+                                    <th class="feat">Feat.</th>
+                                    <th class="visualized_by">Visualized by</th>
+                                    <th class="lyrics_by">Lyrics by</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for x in songs %}
+                                <tr>
+                                    {% with s=x|get_filter:"_source" %}
+                                    <td class="id">{{ s.id }}</td>
+                                    <td class="image"><img src="{% static 'img/song/' %}{{s.id}}.png" width="30" height="30"></td>
+                                    <td class="edition">{{ s.edition }}</td>
+                                    <td class="title"><a href="/song/{{ s.id }}">{{ s.title }}</a></td>
+                                    <td class="composed_by">{{ s.composed_by }}</td>
+                                    <td class="sung_by">{{ s.sung_by }}</td>
+                                    <td class="arranged_by">{{ s.arranged_by }}</td>
+                                    <td class="remixed_by">{{ s.remixed_by }}</td>
+                                    <td class="feat">{{ s.feat }}</td>
+                                    <td class="visualized_by">{{ s.visualized_by }}</td>
+                                    <td class="lyrics_by">{{ s.lyrics_by }}</td>
+                                </tr>
+                                    {% endwith %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" charset="utf-8" defer>
+    $(document).ready(function(){
+        $("#songs").DataTable();
+    });
+</script>
+{% include 'base/footer.html' %}

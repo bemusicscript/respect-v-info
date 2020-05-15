@@ -1,0 +1,146 @@
+{% include 'base/header.html' %}
+{% load get_filter %}
+{% load static %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.7.0/echarts.min.js"></script>
+    <div class="jumbotron">
+        <div class="jumbotron-background"></div>
+        <div class="jumbotron-fluid">
+              <div class="container user_profile">
+                  {% if steam_info == None %}
+                    <img src="{% static '/img/unknown_steam_user.jpg' %}" width="150" height="150">
+                    <div class="info">
+                        <div class="user_name">존재하지 않는 유저입니다</div>
+                    </div>
+                        <div class="last_refreshed_at" style="text-align: right;">
+                        데이터베이스 내에 존재하지 않는 유저입니다. 추가를 원하실 경우 Update를 해주세요.
+                        {% if update.updating == True %}
+                            (현재 업데이트 진행 중)
+                        {% endif %}
+                        <button type="button" class="btn btn-primary btn-sm refresh_button">
+                            Update
+                        </button>
+                    </div>
+                  {% else %}
+                    <div class="picture">
+                        <a href="{{ steam_info.profile_url }}">
+                            <img class="steam_image" src="{{ steam_info.propic_url }}">
+                        </a>
+                    </div>
+                    <div class="info">
+                        <div class="user_name">{{ steam_info.name }}</div>
+                        <div class="achievements">
+                            {% if id == 76561198049125915 %}
+                                <span href="#" class="badge badge-danger">Service Admin</span>
+                            {% endif %}
+                            <span href="#" class="badge badge-light">Respect V Info Beta</span>
+                        </div>
+                    </div>
+                    <div class="last_refreshed_at" style="text-align: right;">
+                        최근 업데이트: {{update.last_updated_at}}
+                        {% if update.updating == True %}
+                            (현재 업데이트 진행 중)
+                        {% endif %}
+                        <button type="button" class="btn btn-primary btn-sm refresh_button">
+                            Update
+                        </button>
+                    </div>
+                  {% endif %}
+
+              </div>
+              <!-- /.container -->
+            </div>
+            <!-- /.jumbotron -->
+
+
+
+    </div>
+    <hr style="width:0;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2"></div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+                    <div align="center">
+                    {% for key, value in info.items %}
+                        <div class="user_info" button={{ key }} user_id={{ id }}>
+                            <a class="button_num">{{ key }}</a><br>
+                            <a class="button_text">BUTTON</a><br>
+                        {% if value is None %}
+                            <img class="tier_animation" src="{% static '/img/tier/1.gif' %}"><br>
+                            <a class="tier_name">UNRANKED</a><br>
+                            <a class="LP">0 LP</a><br>
+                        {% else %}
+                            <img class="tier_animation" src="{% static '/img/tier/' %}{{ value.major_tier }}.gif"><br>
+                            <a class="tier_name">
+                            {% if value.major_tier == 1 %}   IRON
+                                {% elif value.major_tier == 2 %} BRONZE
+                                {% elif value.major_tier == 3 %} SILVER
+                                {% elif value.major_tier == 4 %} GOLD
+                                {% elif value.major_tier == 5 %} PLATINUM
+                                {% elif value.major_tier == 6 %} DIAMOND
+                                {% elif value.major_tier == 7 %} MASTER
+                                {% elif value.major_tier == 8 %} GRAND MASTER
+                            {% endif %}
+                            {% if value.major_tier == 7 or value.major_tier == 8 %}
+                                {% elif value.minor_tier == 1 %} I
+                                {% elif value.minor_tier == 2 %} II
+                                {% elif value.minor_tier == 3 %} III
+                                {% elif value.minor_tier == 4 %} IV
+                            {% endif %}
+                            </a><br>
+                            <a class="lp">{{ value.lp }} LP</a>
+                        {% endif %}
+                        </div>
+                    {% endfor %}
+                    </div><br>
+
+
+                    <div class="loader">
+                        <div class="no_data">
+                            티어 아이콘을 눌러 데이터를 로딩하세요
+                        </div>
+                    </div>
+
+                    <div class="statistics">
+                        <div class="user_statistics card">
+                            <div class="card-header">Ladder Statistics</div>
+                            <div class="stat_info">
+                                <div class="details">
+                                    <div class="header_profile">
+                                        <div class="rank"></div>
+                                        <div class="sub_script"></div>
+                                        <div class="achievements">
+                                            <span href="#" class="badge badge-dark">Respect V Info Beta</span>
+                                        </div>
+                                    </div>
+                                    <div class="graph_list">
+                                        <div class="graph" id="total_game_stat"></div>
+                                        <div class="graph" id="total_normal_round"></div>
+                                        <div class="graph" id="total_hard_round"></div>
+                                        <div class="graph" id="pp_rate"></div>
+                                    </div>
+                                    <div class="todo_text">
+                                        상세 데이터 추가 예정...
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="user_statistics card">
+                            <div class="card-header">Ladder History</div>
+                            <div class="card-content">
+                                <div class="user_history" id="user_histories">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+    </div>
+
+</div>
+
+<script src="{% static 'js/user.js' %}?1"></script>
+{% include 'base/footer.html' %}

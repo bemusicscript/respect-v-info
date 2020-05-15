@@ -1,0 +1,48 @@
+{% include 'base/header.html' %}
+{% load get_filter %}
+{% load static %}
+    <div class="jumbotron">
+        <div class="container-fluid">
+            <h1 class="display-4">User Search</h1>
+            <p class="lead" style="color:white;">User Search</p>
+        </div>
+        <div class="jumbotron-background"></div>
+    </div>
+    <hr style="width:0;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4"></div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-lg-offset-2">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 p-1">
+                            <input type="text" class="form-control" id="id_search" placeholder="CustomURL or SteamID64" style="text-align: center">
+                        </div>
+                        <div class="loader col-sm-12 col-md-12 col-xs-12 col-lg-12 p-1">
+                            <img class="loader_anim" src="" align=center />
+                        </div>
+                        <div class="profile_border">
+                            <div style="padding:10px">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <img class="img" src="#" width="100px" height="100px" />
+                                        </td>
+                                        <td style="padding-left: 10px;">
+                                          <div class="preview_info">
+                                                <div class="name"></div><br>
+                                                <span class="id" href="#"></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{% static 'js/search.js' %}"></script>
+{% include 'base/footer.html' %}

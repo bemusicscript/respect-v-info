@@ -1,0 +1,67 @@
+{% include 'base/header.html' %}
+{% load get_filter %}
+{% load static %}
+    <div class="jumbotron">
+        <div class="container-fluid">
+            <h1 class="display-4">Play History - {{ name }}</h1>
+            <p class="lead" style="color:white;">Ladder match history</p>
+        </div>
+        <div class="jumbotron-background"></div>
+    </div>
+    <hr style="width:0;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2"></div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-offset-2">
+                <div class="card">
+                    <div class="card-content ranking-card">
+                        <table class="display table table-responsive" id="songs" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th class="_dt">Matched at</th>
+                                    <th class="_btn">Button</th>
+                                    <th class="_uname">User</th>
+                                    <th class="_oname">Opponent</th>
+                                    <th class="_win">Result</th>
+                                    <th class="_lp">LP</th>
+                                    <th class="_uscore">Score</th>
+                                    <th class="_uacc">Accuracy</th>
+                                    <th class="_oscore">Opt. Score</th>
+                                    <th class="_oacc">Opt. Accuracy</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for x in ladder_info %}
+                                <tr>
+                                    {% with v=x|get_filter:"_source" %}
+                                    <td class="_dt">{{ v.datetime }}</td>
+                                    <td class="_btn">{{ v.button }}</td>
+                                    <!-- <td class="_uid">{{ v.user_id }}</td> -->
+                                    <td class="_uname">{{ v.user_name }}</td>
+                                    <!-- <td class="_oid">{{ v.opponent_id }}</td> -->
+                                    <td class="_oname">{{ v.opponent_name }}</td>
+                                    <td class="_win">{{ v.win }}</td>
+                                    <td class="_lp">{{ v.gain_lp }}</td>
+                                    <!-- <td class="_sid">{{ v.match.song }}</td> -->
+                                    <td class="_uscore">{{ v.match.user_score }}</td>
+                                    <td class="_uacc">{{ v.match.user_accuracy }}</td>
+                                    <td class="_oscore">{{ v.match.opponent_score }}</td>
+                                    <td class="_oacc">{{ v.match.opponent_accuracy }}</td>
+
+                                    {% endwith %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" charset="utf-8" defer>
+    $(document).ready(function(){
+        $("#songs").DataTable();
+    });
+</script>
+{% include 'base/footer.html' %}

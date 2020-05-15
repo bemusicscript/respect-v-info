@@ -1,0 +1,26 @@
+g3d-body {
+    text-align: center;
+    font-family: Sans-serif;
+    margin: 0;
+}
+
+.g3d-graph-data {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 5px;
+}
+
+.g3d-toggle-data-btn {
+    cursor: pointer;
+    opacity: 0.85;
+}
+
+.g3d-toggle-data-btn:hover {
+    opacity: 1;
+}
+
+#g3d-graph-data-description {
+    font-size: 15px;
+    color: slategrey;
+}

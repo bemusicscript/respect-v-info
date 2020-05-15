@@ -1,0 +1,77 @@
+{% include 'base/header.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/force-graph-3d.css' %}">
+<script src="//unpkg.com/3d-force-graph@1"></script>
+<script src="//unpkg.com/d3-dsv"></script>
+<script src="{% static 'js/force-graph-3d-loader.js' %}?_123"></script>
+
+    <div class="jumbotron">
+        <div class="jumbotron-background"></div>
+        <div class="container-fluid">
+            <h1 class="display-4">Statistics</h1>
+            <p class="lead" style="color:white;">Statistics for ladder matches</p>
+        </div>
+    </div>
+    <hr style="width:0;">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2"></div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+                    <div align="center">
+                        <div class="card">
+                            <div class="card-header">6B Ladder Network</div>
+                            <div id="3d-graph"></div>
+                            <script>
+                                console.log();
+                              const Graph = ForceGraph3D({ controlType: 'orbit' })
+                              (document.getElementById('3d-graph'))
+                                  .width($("#3d-graph").width())
+                                  .height($("#3d-graph").height())
+                                .jsonUrl("{% static 'json/test.json' %}")
+                                .nodeLabel('id')
+                                .nodeColor((node)=>{
+                                    switch(node.group) {
+                                        case 1: //iron
+                                            return 'rgb(255,250,210)';
+                                        case 2: //bronze
+                                            return 'rgb(139,69,19)';
+                                        case 3: //silver
+                                            return 'rgb(192,192,192)';
+                                        case 4: //gold
+                                            return 'rgb(255,215,0)';
+                                        case 5: //platinum
+                                            return 'rgb(0,255,255)';
+                                        case 6: //diamond
+                                            return 'rgb(30,144,255)';
+                                        case 7: //master
+                                            return 'rgb(255,0,255)';
+                                        case 8: //grandmaster
+                                            return 'rgb(255,0,0)';
+                                        default: //idk
+                                            return 'rgb(0,0,0)';
+                                    }
+                                });
+                            </script><br>
+                            <span>
+                                <font style="color:rgb(0,0,0)">■ UNKNOWN</font>
+                                <font style="color:rgb(255,250,210)">■ IRON</font>
+                                <font style="color:rgb(139,69,19)">■ BRONZE</font>
+                                <font style="color:rgb(192,192,192)">■ SILVER</font>
+                                <font style="color:rgb(255,215,0)">■ GOLD</font>
+                                <font style="color:rgb(0,255,255)">■ PLATINUM</font>
+                                <font style="color:rgb(30,144,255)">■ DIAMOND</font>
+                                <font style="color:rgb(255,0,255)">■ MASTER</font>
+                                <font style="color:rgb(255,0,0)">■ GRAND MASTER</font>
+
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+        </div>
+    </div>
+{% include 'base/footer.html' %}

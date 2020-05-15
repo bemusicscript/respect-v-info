@@ -1,0 +1,85 @@
+{% include 'base/header.html' %}
+{% load get_filter %}
+{% load static %}
+    <div class="jumbotron">
+        <div class="container-fluid">
+            <h1 class="display-4">Ladder Ranking</h1>
+            <p class="lead" style="color:white;">Pre-Season {{button}} Button Top 100</p>
+        </div>
+        <div class="jumbotron-background"></div>
+    </div>
+    <hr style="width:0;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-1"></div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10">
+                <div class="ladder_rank">
+                    <div class="button_rank {{button}}_button">
+                        <table class="table rank_table">
+                            <thead>
+                                <tr>
+                                    <th class="rank">#</th>
+                                    <th class="name">ID</th>
+                                    <th class="tier">Tier</th>
+                                    <th class="lp">LP</th>
+                                    <th class="win_rate">Win Rate</th>
+                                    <th class="pp_rate">PP Rate</th>
+                                    <th class="acc">Accuracy</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for user in detail %}
+                                <tr class="user_card" id={{user.id}}>
+                                    <td class="rank">
+                                        <img src='{% static "/img/country_flag/" %}{{user.country_code|lower}}.png' width="30px">
+                                        {{user.rank}}
+                                        {% if user.flu_rank > 0 %}
+                                            (<font color="#dc143c">▲{{user.abs_flu_rank}}</font>)
+                                        {% elif user.flu_rank < 0 %}
+                                            (<font color="#6495ed">▼{{user.abs_flu_rank}}</font>)
+                                        {% else %}
+                                            (-)
+                                        {% endif %}
+                                    </td>
+                                    <td class="name">
+                                        <img src="{{user.avatar_url}}" width="50px" height="50px">
+                                        {{user.name}}
+                                    </td>
+                                    <td class="tier">
+                                        <img src='{% static "/img/tier/" %}{{user.major_tier}}.png' width="50px" height="50px">
+                                        <div class="tier_text">
+                                            {{user.tier_name}}
+                                            {% if user.promote %}
+                                                <a class="promote_text">Promo.</a>
+                                            {% endif %}
+                                        </div>
+                                    </td>
+                                    <td class="lp">{{user.lp}}LP</td>
+                                    <td class="win_rate">
+                                        ({{user.game_wins}}/{{user.game_loose}})
+                                        <div class="progress position-relative">
+                                            <div class="progress-bar" role="progressbar" style="width: {{user.win_rate}}%;"></div>
+                                            <div class="justify-content-center d-flex position-absolute w-100">{{user.win_rate}}%</div>
+                                        </div>
+                                    </td>
+                                    <td class="pp_rate">
+                                        ({{user.perfect}}/{{user.maxcombo}})
+                                        <div class="progress position-relative">
+                                            <div class="progress-bar" role="progressbar" style="width: {{user.pp_rate}}%;"></div>
+                                            <div class="justify-content-center d-flex position-absolute w-100">{{user.pp_rate}}%</div>
+                                        </div>
+                                    </td>
+                                    <td class="acc">{{user.accuracy}}%</td>
+
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+</div>
+<script src="{% static 'js/ladder_rank.js' %}"></script>
+{% include 'base/footer.html' %}

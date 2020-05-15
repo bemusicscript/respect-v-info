@@ -1,0 +1,70 @@
+{% include 'base/header.html' %}
+{% load get_filter %}
+{% load static %}
+    <div class="jumbotron">
+        <div class="container-fluid">
+            <h1 class="display-4">Ladder Ranking</h1>
+            <p class="lead" style="color:white;">Pre-Season Leaderboard</p>
+        </div>
+        <div class="jumbotron-background"></div>
+    </div>
+    <hr style="width:0;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-1"></div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10">
+                <div class="row">
+                    {% for button, data in preview.items %}
+                        <div class="col-lg-6 col-sm-12 col-sm-12">
+                            <div class="button_image">
+                                <a href="{{season}}/{{button}}">
+                                    <img width=100% src='{% static "/img/button/" %}{{button}}_btn_long.png'>
+                                </a>
+                            </div>
+                            <div class="button_rank {{button}}_button">
+                                <table class="table preview_rank_table">
+                                    <thead>
+                                    <tr>
+                                        <th class="rank">#</th>
+                                        <th class="name">ID</th>
+                                        <th class="tier">Tier</th>
+                                        <th class="lp">LP</th>
+                                        <th class="win_rate">Win Rate</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for user in data %}
+                                        <tr class="preview_user_card" id="{{user.id}}">
+                                            <td class="rank">
+                                                <img src='{% static "/img/country_flag/" %}{{user.country_code|lower}}.png' width="30px">
+                                                {{user.rank}}
+                                                {% if user.flu_rank > 0 %}
+                                                    (<font color="#dc143c">▲{{user.abs_flu_rank}}</font>)
+                                                {% elif user.flu_rank < 0 %}
+                                                    (<font color="#6495ed">▼{{user.abs_flu_rank}}</font>)
+                                                {% else %}
+                                                    (-)
+                                                {% endif %}
+                                            </td>
+                                            <td class="name"><img src="{{user.avatar_url}}" width="50px" height="50px">{{user.name}}</td>
+                                            <td class="tier"><img src='{% static "/img/tier/" %}{{user.major_tier}}.png' width="50px" height="50px"></td>
+                                            <td class="lp">{{ user.lp }}LP</td>
+                                            <td class="win_rate">
+                                                <div class="progress">
+                                                  <div class="progress-bar" role="progressbar" style="width: {{user.win_rate}}%;">{{user.win_rate}}%</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                  </div>
+                    {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{% static 'js/ladder_rank.js' %}"></script>
+{% include 'base/footer.html' %}
